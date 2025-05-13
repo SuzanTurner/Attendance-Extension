@@ -15,11 +15,17 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
 1. Clone the repo  
    `git clone --branch master https://github.com/SuzanTurner/Attendance-Extension.git`
 
-2. Load the extension in Chrome:
+2. Load the extension in Chrome (or Brave, Edge):
    - Go to `chrome://extensions/`
    - Enable **Developer Mode**
    - Click **Load unpacked**
    - Select the project folder
+     
+3. Using Firefox? We got you!
+   - Go to about:debugging
+   - Click "This Firefox"
+   - Choose "Load Temporary Add-on"
+   - Select your manifest.json file
 
 ## 🎯 Upcoming Milestones
 
