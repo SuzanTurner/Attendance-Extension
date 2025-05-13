@@ -22,9 +22,9 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
    - Select the project folder
      
 3. Using Firefox? We got you!
-   - Go to about:debugging
-   - Click "This Firefox"
-   - Choose "Load Temporary Add-on"
+   - Go to `about:debugging`
+   - Click **This Firefox**
+   - Choose **Load Temporary Add-on**
    - Select your manifest.json file
 
 ## 🎯 Upcoming Milestones
