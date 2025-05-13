@@ -1,97 +1,100 @@
 #attendance-popup {
   position: fixed;
-  top: 80px;
+  top: 20px;
   right: 20px;
-  background: #ffffff;
-  border: 2px solid #4CAF50;
+  background: white;
+  padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 10000;
   max-width: 400px;
   max-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+  overflow-y: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-overflow-scrolling: touch;
 }
 
 #attendance-popup h3 {
-  margin: 0;
-  padding: 16px 16px 8px 16px;
-  color: #2e7d32;
-  border-bottom: 2px solid #4CAF50;
-  background: #ffffff;
-  -webkit-font-smoothing: antialiased; /* For better text rendering on iOS */
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 1.2em;
 }
 
 .attendance-summary {
   background: #f5f5f5;
-  padding: 12px 16px;
-  text-align: center;
-  font-weight: bold;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
 }
 
 .attendance-summary p {
-  margin: 0;
-  color: #2e7d32;
-  font-size: 1.1em;
+  margin: 5px 0;
 }
 
 .overall-message {
-  margin-top: 8px !important;
-  font-size: 0.95em !important;
-  color: #d32f2f !important;
-  font-weight: 500;
+  color: #666;
+  font-style: italic;
 }
 
 #attendance-popup ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  overflow-y: auto;
-  flex: 1;
-  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
 }
 
 #attendance-popup li {
-  padding: 12px 16px;
-  border-bottom: 1px solid #e0e0e0;
-  background: #ffffff;
-  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
 }
 
 #attendance-popup li:last-child {
   border-bottom: none;
 }
 
-#attendance-popup strong {
-  display: block;
-  margin-bottom: 4px;
-  color: #333;
-}
-
 .attendance-details {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.9em;
+  gap: 10px;
+  margin-top: 5px;
 }
 
 .percentage {
   font-weight: bold;
-  color: #2e7d32;
+  color: #2196F3;
+}
+
+.percentage.low-attendance {
+  color: #d32f2f;
 }
 
 .count {
   color: #666;
+  font-size: 0.9em;
 }
 
 .message {
-  color: #d32f2f;
-  font-weight: 500;
+  color: #666;
+  font-size: 0.9em;
+  flex-grow: 1;
+}
+
+.fun-message {
+  text-align: center;
+  padding: 12px;
+  margin-top: 8px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e0e0e0;
+  color: #666;
+  font-style: italic;
+  font-size: 0.9em;
 }
 
 /* Custom scrollbar styling */
+#attendance-popup ul {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Webkit scrollbar styling for iOS */
 #attendance-popup ul::-webkit-scrollbar {
   width: 8px;
   -webkit-appearance: none;

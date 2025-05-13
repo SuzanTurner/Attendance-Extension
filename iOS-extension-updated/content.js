@@ -1,4 +1,4 @@
-// Safari-specific initialization
+// iOS-specific initialization
 if (typeof browser === 'undefined') {
   window.browser = chrome;
 }
@@ -121,38 +121,6 @@ function calculateInsights() {
   displayPopup(results);
 }
 
-function calculateOverallAttendance(data) {
-  const total = data.reduce((sum, course) => sum + course.total, 0);
-  const attended = data.reduce((sum, course) => sum + course.attended, 0);
-  const percentage = (attended / total) * 100;
-  const overallThreshold = 75; // Fixed threshold for overall attendance
-  
-  let message = "";
-  if (percentage < overallThreshold) {
-    let requiredClasses = 0;
-    let currentAttended = attended;
-    let currentTotal = total;
-    
-    while ((currentAttended / currentTotal) * 100 < overallThreshold) {
-      currentAttended++;
-      currentTotal++;
-      requiredClasses++;
-    }
-    
-    message = "⚠️ Attend at least " + requiredClasses + " more classes to reach " + overallThreshold + "%";
-  } else {
-    // Calculate skippable classes: (attended)/(total + x) = 0.75
-    // Solving for x: x = (attended/0.75) - total
-    const skippableClasses = Math.floor((attended / 0.75) - total);
-    message = "✅ You can skip " + skippableClasses + " classes and still be above " + overallThreshold + "%";
-  }
-  
-  return {
-    percentage: percentage.toFixed(2),
-    message: message
-  };
-}
-
 function displayPopup(data) {
   // Remove existing popup if any
   const existingPopup = document.getElementById('attendance-popup');
@@ -187,17 +155,50 @@ function displayPopup(data) {
         "<li>" +
         "<strong>" + d.subject + "</strong>" +
         "<div class='attendance-details'>" +
-        "<span class='percentage'>" + d.percentage + "%</span>" +
+        "<span class='percentage" + (parseFloat(d.percentage) < 60 ? " low-attendance" : "") + "'>" + d.percentage + "%</span>" +
         "<span class='count'>(" + d.attended + "/" + d.total + ")</span>" +
         "<span class='message'>" + d.message + "</span>" +
         "</div>" +
         "</li>";
     });
-    html += "</ul>";
+    html += "</ul>" +
+      "<div class='fun-message'>Okie now bui me Cold Coffe! ☕</div>";
     popup.innerHTML = html;
   }
 
   document.body.appendChild(popup);
+}
+
+function calculateOverallAttendance(data) {
+  const total = data.reduce((sum, course) => sum + course.total, 0);
+  const attended = data.reduce((sum, course) => sum + course.attended, 0);
+  const percentage = (attended / total) * 100;
+  const overallThreshold = 75; // Fixed threshold for overall attendance
+  
+  let message = "";
+  if (percentage < overallThreshold) {
+    let requiredClasses = 0;
+    let currentAttended = attended;
+    let currentTotal = total;
+    
+    while ((currentAttended / currentTotal) * 100 < overallThreshold) {
+      currentAttended++;
+      currentTotal++;
+      requiredClasses++;
+    }
+    
+    message = "⚠️ Attend at least " + requiredClasses + " more classes to reach " + overallThreshold + "%";
+  } else {
+    // Calculate skippable classes: (attended)/(total + x) = 0.75
+    // Solving for x: x = (attended/0.75) - total
+    const skippableClasses = Math.floor((attended / 0.75) - total);
+    message = "✅ You can skip " + skippableClasses + " classes and still be above " + overallThreshold + "%";
+  }
+  
+  return {
+    percentage: percentage.toFixed(2),
+    message: message
+  };
 }
 
 // Wait for the page to be fully loaded
