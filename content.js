@@ -32,7 +32,7 @@ function calculateInsights() {
   const rows = table.querySelectorAll('tbody tr');
   console.log(`Found ${rows.length} rows to process`);
   
-  const threshold = 65;
+  const threshold = 60;
   const results = [];
 
   rows.forEach((row, index) => {
@@ -80,12 +80,27 @@ function calculateInsights() {
     }
 
     let message = "";
-    if (percentage < threshold) {
-      const needed = Math.ceil(((threshold / 100) * total - attended) / ((1 - threshold / 100)));
-      message = "⚠️ Attend at least " + needed + " more classes";
+    if ((attended / total) * 100 < threshold) {
+      let extraClasses = 0;
+      let tempAttended = attended;
+      let tempTotal = total;
+      
+      while ((tempAttended / tempTotal) * 100 < threshold) {
+        tempAttended += 1;
+        tempTotal += 1;
+        extraClasses += 1;
+      }
+      message = "⚠️ Attend at least " + extraClasses + " more classes to cross " + threshold + "%";
     } else {
-      const maxBunks = Math.floor((attended - (threshold / 100) * total) / (1 - threshold / 100));
-      message = "✅ Can safely miss " + maxBunks + " classes";
+      let bunkable = 0;
+      let tempTotal = total;
+      
+      while ((attended / tempTotal) * 100 >= threshold) {
+        tempTotal += 1;
+        bunkable += 1;
+      }
+      bunkable -= 1; // The last increment takes it below threshold
+      message = "✅ You can bunk " + bunkable + " classes and still stay above " + threshold + "%";
     }
 
     results.push({ 
