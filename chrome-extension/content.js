@@ -150,7 +150,7 @@ function displayPopup(data) {
         "<li>" +
         "<strong>" + d.subject + "</strong>" +
         "<div class='attendance-details'>" +
-        "<span class='percentage'>" + d.percentage + "%</span>" +
+        "<span class='percentage" + (parseFloat(d.percentage) < 60 ? " low-attendance" : "") + "'>" + d.percentage + "%</span>" +
         "<span class='count'>(" + d.attended + "/" + d.total + ")</span>" +
         "<span class='message'>" + d.message + "</span>" +
         "</div>" +
