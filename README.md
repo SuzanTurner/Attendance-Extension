@@ -2,7 +2,7 @@
 
 A smart, browser-based extension that scrapes and analyzes student attendance from your college website. It doesn't just show percentages — it gives you **actionable insights** like how many classes you can skip or how many you need to attend to stay above the 75% mark.
 
-> No more panic-checking your attendance at 11:59 PM.
+**No more panic-checking your attendance at 11:59 PM**
 
 ---
 
