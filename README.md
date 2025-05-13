@@ -1,6 +1,6 @@
 # 📊 Attendance Extension
 
-A smart, browser-based extension that scrapes and analyzes student attendance from your college website. It doesn't just show percentages — it gives you **actionable insights** like how many classes you can skip or how many you need to attend to stay above the 75% mark.
+A smart, browser-based extension that scrapes and analyzes student attendance from your college website. It doesn't just show percentages — it gives you **actionable insights** like how many classes you can skip or how many you need to attend to stay above the 75% mark. 
 
 **No more panic-checking your attendance at 11:59 PM**
 
@@ -15,7 +15,7 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
 1. Clone the repo  
    `git clone --branch master https://github.com/SuzanTurner/Attendance-Extension.git`
 
-2. Load the extension in Chrome (or Brave, Edge, Opera):
+2. If you're using Brave, Chrome, Opera or Edge:
    - Go to `chrome://extensions/` if you're using Brave/Google
    - Go to `opera://extensions/` if you're using Opera
    - Go to `edge://extensions` if you're using Edge
@@ -29,10 +29,12 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
    - Choose **Load Temporary Add-on**
    - Select your manifest.json file
 
+4. If you're using Safari, good luck !! (Only God can save you)
+
 ## 🎯 Upcoming Milestones
 
 - [ ] Deploy Django backend
-- [ ] Add login/signup functionality
+- [ ] Add login/signup functionality and user account
 - [ ] Train and integrate CGPA predictor
 - [ ] Add question paper analysis model
 - [ ] Deploy full-stack version to Render / Vercel
