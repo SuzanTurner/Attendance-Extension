@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Attendance Insights",
+  "version": "1.0",
+  "description": "Track and analyze your attendance with detailed insights",
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://rcoem.in/studentCourseFileNew.htm*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "*://rcoem.in/*"
+  ],
+  "web_accessible_resources": [
+    "icon48.png",
+    "icon128.png"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "attendance-insights@example.com",
+      "strict_min_version": "57.0"
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "attendance-insights@example.com",
+      "strict_min_version": "57.0"
+    }
+  }
+} 
