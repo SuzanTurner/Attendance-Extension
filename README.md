@@ -13,7 +13,7 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
 ## 📦 Installation
 
 1. Clone the repo  
-   `git clone https://github.com/SuzanTurner/Attendance-Extension.git`
+   `git clone --branch master https://github.com/SuzanTurner/Attendance-Extension.git`
 
 2. Load the extension in Chrome:
    - Go to `chrome://extensions/`
