@@ -205,7 +205,8 @@ function displayPopup(data) {
         "</div>" +
         "</li>";
     });
-    html += "</ul>";
+    html += "</ul>" +
+      "<div class='fun-message'>Okie now bui me Cold Coffe! ☕</div>";
     popup.innerHTML = html;
   }
 

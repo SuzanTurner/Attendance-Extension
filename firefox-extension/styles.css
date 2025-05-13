@@ -112,4 +112,15 @@
 
 #attendance-popup ul::-webkit-scrollbar-thumb:hover {
   background: #2e7d32;
+}
+
+.fun-message {
+  text-align: center;
+  padding: 12px;
+  margin-top: 8px;
+  background: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+  color: #666;
+  font-style: italic;
+  font-size: 0.9em;
 } 
