@@ -4,13 +4,10 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
 
 **No more panic-checking your attendance at 11:59 PM**
 
----
-
 ## 🚀 Features
 
 - ✅ **Real-Time Attendance Insights**  
   Automatically fetches data from the college portal and displays subject-wise attendance.
----
 
 
 ## 📦 Installation
@@ -23,7 +20,6 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
    - Enable **Developer Mode**
    - Click **Load unpacked**
    - Select the project folder
----
 
 ## 🎯 Upcoming Milestones
 
@@ -40,8 +36,8 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
 - [Yadhnika Wakde](https://github.com/SuzanTurner)
 - [Durva Deshpande](https://github.com/durva7px)
 
----
-
 ## ⭐ Show Some Love
 
 If you find this useful or cool, drop a ⭐ on this repo !!
+
+---
