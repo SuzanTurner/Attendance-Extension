@@ -105,9 +105,11 @@ function calculateInsights() {
         bunkable += 1;
       }
       bunkable -= 1; // The last increment takes it below threshold
-      message = bunkable === 0 
-        ? "😅 You're right on edge, do not skip classes 😅"
-        : "✅ You can bunk " + bunkable + " classes and still stay above " + threshold + "%";
+      message = percentage === 100
+        ? "😎 You can bunk " + bunkable + " classes and still stay above " + threshold + "%"
+        : bunkable === 0 
+          ? "😅 You're right on edge, do not skip classes"
+          : "✅ You can bunk " + bunkable + " classes and still stay above " + threshold + "%";
     }
 
     results.push({ 
@@ -194,9 +196,11 @@ function calculateOverallAttendance(data) {
     // Calculate skippable classes: (attended)/(total + x) = 0.75
     // Solving for x: x = (attended/0.75) - total
     const skippableClasses = Math.floor((attended / 0.75) - total);
-    message = skippableClasses === 0
-      ? "😅 You're right on edge, do not skip classes 😅"
-      : "✅ You can skip " + skippableClasses + " classes and still be above " + overallThreshold + "%";
+    message = percentage === 100
+      ? "😎 You can skip " + skippableClasses + " classes and still be above " + overallThreshold + "%"
+      : skippableClasses === 0
+        ? "😅 You're right on edge, do not skip classes 😅"
+        : "✅ You can skip " + skippableClasses + " classes and still be above " + overallThreshold + "%";
   }
   
   return {
