@@ -136,10 +136,12 @@ function displayPopup(data) {
       "<li>You're logged in to the portal</li>" +
       "</ul>";
   } else {
+    const overall = calculateOverallAttendance(data);
     let html = 
       "<h3>📊 Attendance Insights</h3>" +
       "<div class='attendance-summary'>" +
-      "<p>Overall Attendance: " + calculateOverallAttendance(data) + "%</p>" +
+      "<p>Overall Attendance: " + overall.percentage + "%</p>" +
+      "<p class='overall-message'>" + overall.message + "</p>" +
       "</div>" +
       "<ul>";
     
@@ -164,7 +166,33 @@ function displayPopup(data) {
 function calculateOverallAttendance(data) {
   const total = data.reduce((sum, course) => sum + course.total, 0);
   const attended = data.reduce((sum, course) => sum + course.attended, 0);
-  return ((attended / total) * 100).toFixed(2);
+  const percentage = (attended / total) * 100;
+  const overallThreshold = 75; // Fixed threshold for overall attendance
+  
+  let message = "";
+  if (percentage < overallThreshold) {
+    let requiredClasses = 0;
+    let currentAttended = attended;
+    let currentTotal = total;
+    
+    while ((currentAttended / currentTotal) * 100 < overallThreshold) {
+      currentAttended++;
+      currentTotal++;
+      requiredClasses++;
+    }
+    
+    message = "⚠️ Attend at least " + requiredClasses + " more classes to reach " + overallThreshold + "%";
+  } else {
+    // Calculate skippable classes: (attended)/(total + x) = 0.75
+    // Solving for x: x = (attended/0.75) - total
+    const skippableClasses = Math.floor((attended / 0.75) - total);
+    message = "✅ You can skip " + skippableClasses + " classes and still be above " + overallThreshold + "%";
+  }
+  
+  return {
+    percentage: percentage.toFixed(2),
+    message: message
+  };
 }
 
 // Wait for the page to be fully loaded

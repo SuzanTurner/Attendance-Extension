@@ -35,6 +35,13 @@
   font-size: 1.1em;
 }
 
+.overall-message {
+  margin-top: 8px !important;
+  font-size: 0.95em !important;
+  color: #d32f2f !important;
+  font-weight: 500;
+}
+
 #attendance-popup ul {
   list-style: none;
   padding: 0;
