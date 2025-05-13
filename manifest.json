@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "RCOEM Attendance Insight",
+  "version": "1.0",
+  "description": "Shows how many classes you need to attend or can skip to maintain attendance.",
+  "permissions": ["scripting"],
+  "content_scripts": [
+    {
+      "matches": ["https://rcoem.in/studentCourseFileNew.htm*", "https://rcoem.in/studentCourseFileNew.htm?*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
