@@ -1,0 +1,124 @@
+#attendance-popup {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #ffffff;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  max-width: 400px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+#attendance-popup h3 {
+  margin: 0;
+  padding: 16px 16px 8px 16px;
+  color: #2e7d32;
+  border-bottom: 2px solid #4CAF50;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased; /* For better text rendering on iOS */
+}
+
+.attendance-summary {
+  background: #f5f5f5;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.attendance-summary p {
+  margin: 0;
+  color: #2e7d32;
+  font-size: 1.1em;
+}
+
+.overall-message {
+  margin-top: 8px !important;
+  font-size: 0.95em !important;
+  color: #d32f2f !important;
+  font-weight: 500;
+}
+
+#attendance-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+#attendance-popup li {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #ffffff;
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+}
+
+#attendance-popup li:last-child {
+  border-bottom: none;
+}
+
+#attendance-popup strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.attendance-details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+}
+
+.percentage {
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.count {
+  color: #666;
+}
+
+.message {
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+/* Custom scrollbar styling */
+#attendance-popup ul::-webkit-scrollbar {
+  width: 8px;
+  -webkit-appearance: none;
+}
+
+#attendance-popup ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#attendance-popup ul::-webkit-scrollbar-thumb {
+  background: #4CAF50;
+  border-radius: 4px;
+}
+
+#attendance-popup ul::-webkit-scrollbar-thumb:hover {
+  background: #2e7d32;
+}
+
+/* iOS-specific adjustments */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  #attendance-popup {
+    transform: translateZ(0); /* Force hardware acceleration */
+    backface-visibility: hidden;
+  }
+  
+  #attendance-popup li {
+    transform: translateZ(0);
+  }
+} 
