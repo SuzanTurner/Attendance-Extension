@@ -28,6 +28,7 @@
 }
 
 .attendance-summary p {
+  font-weight: bold;
   margin: 5px 0;
 }
 
