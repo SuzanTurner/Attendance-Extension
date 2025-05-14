@@ -28,11 +28,5 @@
       "id": "attendance-insights@example.com",
       "strict_min_version": "58.0"
     }
-  },
-  "applications": {
-    "gecko": {
-      "id": "attendance-insights@example.com",
-      "strict_min_version": "58.0"
-    }
   }
 } 

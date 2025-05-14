@@ -1,7 +1,9 @@
-// Firefox-specific initialization
+// Remove unsafe DOMPurify usage
+// ... existing code ...
 if (typeof browser === 'undefined') {
   window.browser = chrome;
 }
+// ... existing code ...
 
 // Ensure the script runs after the page is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -184,38 +186,83 @@ function displayPopup(data) {
   popup.id = "attendance-popup";
 
   if (data.length === 0) {
-    popup.innerHTML = 
-      "<h3>📊 Attendance Insights</h3>" +
-      "<p>No attendance data found. Please make sure:</p>" +
-      "<ul>" +
-      "<li>You're on the correct page</li>" +
-      "<li>The attendance table is visible</li>" +
-      "<li>You're logged in to the portal</li>" +
-      "</ul>";
+    const heading = document.createElement("h3");
+    heading.textContent = "📊 Attendance Insights";
+    popup.appendChild(heading);
+
+    const message = document.createElement("p");
+    message.textContent = "No attendance data found. Please make sure:";
+    popup.appendChild(message);
+
+    const list = document.createElement("ul");
+    const items = [
+      "You're on the correct page",
+      "The attendance table is visible",
+      "You're logged in to the portal"
+    ];
+    
+    items.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      list.appendChild(li);
+    });
+    popup.appendChild(list);
   } else {
     const overall = calculateOverallAttendance(data);
-    let html = 
-      "<h3>📊 Attendance Insights</h3>" +
-      "<div class='attendance-summary'>" +
-      "<p>Overall Attendance: " + overall.percentage + "%</p>" +
-      "<p class='overall-message'>" + overall.message + "</p>" +
-      "</div>" +
-      "<ul>";
     
+    const heading = document.createElement("h3");
+    heading.textContent = "📊 Attendance Insights";
+    popup.appendChild(heading);
+
+    const summary = document.createElement("div");
+    summary.className = "attendance-summary";
+    
+    const overallText = document.createElement("p");
+    overallText.textContent = "Overall Attendance: " + overall.percentage + "%";
+    summary.appendChild(overallText);
+
+    const message = document.createElement("p");
+    message.className = "overall-message";
+    message.textContent = overall.message;
+    summary.appendChild(message);
+    
+    popup.appendChild(summary);
+
+    const list = document.createElement("ul");
     data.forEach(d => {
-      html += 
-        "<li>" +
-        "<strong>" + d.subject + "</strong>" +
-        "<div class='attendance-details'>" +
-        "<span class='percentage" + (parseFloat(d.percentage) < 60 ? " low-attendance" : "") + "'>" + d.percentage + "%</span>" +
-        "<span class='count'>(" + d.attended + "/" + d.total + ")</span>" +
-        "<span class='message'>" + d.message + "</span>" +
-        "</div>" +
-        "</li>";
+      const li = document.createElement("li");
+      
+      const subject = document.createElement("strong");
+      subject.textContent = d.subject;
+      li.appendChild(subject);
+
+      const details = document.createElement("div");
+      details.className = "attendance-details";
+
+      const percentage = document.createElement("span");
+      percentage.className = "percentage" + (parseFloat(d.percentage) < 60 ? " low-attendance" : "");
+      percentage.textContent = d.percentage + "%";
+      details.appendChild(percentage);
+
+      const count = document.createElement("span");
+      count.className = "count";
+      count.textContent = "(" + d.attended + "/" + d.total + ")";
+      details.appendChild(count);
+
+      const message = document.createElement("span");
+      message.className = "message";
+      message.textContent = d.message;
+      details.appendChild(message);
+
+      li.appendChild(details);
+      list.appendChild(li);
     });
-    html += "</ul>" +
-      "<div class='fun-message'>Okie now bui me Cold Coffe! ☕</div>";
-    popup.innerHTML = html;
+    popup.appendChild(list);
+
+    const funMessage = document.createElement("div");
+    funMessage.className = "fun-message";
+    funMessage.textContent = "Okie now bui me Cold Coffe! ☕";
+    popup.appendChild(funMessage);
   }
 
   document.body.appendChild(popup);
