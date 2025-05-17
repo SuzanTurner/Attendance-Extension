@@ -25,7 +25,7 @@ A smart, browser-based extension that scrapes and analyzes student attendance fr
    - Click **Load unpacked**
    - Select the project folder
      
-3. Using Firefox? We got you!
+3. Using Firefox Web? We got you!
    - Click [here](https://addons.mozilla.org/en-US/firefox/addon/rcoem-attendance-insights/) to download the extension.
 
 4. If you're using Safari, good luck !! (Only God can save you)
