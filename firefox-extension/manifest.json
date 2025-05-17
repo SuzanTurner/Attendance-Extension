@@ -3,6 +3,7 @@
   "name": "Attendance Insights",
   "version": "1.0",
   "description": "Track and analyze your attendance with detailed insights",
+  "license" : "MIT",
   "icons": {
     "48": "icon48.png",
     "128": "icon128.png"
